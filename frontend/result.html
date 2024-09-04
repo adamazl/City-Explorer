@@ -8,43 +8,106 @@
     <meta name="description" content="Find your city result">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="/frontend/icons/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <!-- Google Font -->
 
     <style>
         /* General styling shared across both pages */
         body {
-            background-color: #f7f9fc;
-            color: #333333;
-            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            /* Ensure the body covers the full height of the viewport */
         }
 
         header {
-            text-align: center;
-            margin-top: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-container img {
+            height: 40px;
+            /* Adjust logo size */
+            width: auto;
         }
 
         header h1 {
             color: #1f77b4;
             margin: 0;
-            /* Remove any default margins to standardize layout */
+            font-size: 1.75rem;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            background-color: #1f77b4;
+            border-radius: 4px;
+        }
+
+        nav ul li {
+            margin: 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 600;
+            padding: 10px 20px;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #105a8b;
+            border-radius: 4px;
         }
 
         main {
+            flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            flex: 1;
-            /* Make the main area fill the remaining space between the header and footer */
-            padding: 20px;
+            padding: 40px;
             text-align: center;
         }
 
+        p#cityResult {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+
+        button {
+            background-color: #2ca02c;
+            color: #ffffff;
+            border: none;
+            padding: 12px 24px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
 
         /* Full-page overlay for the spinner */
         #overlay {
@@ -53,7 +116,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(255, 255, 255, 1);
+            background-color: rgba(255, 255, 255, 0.8);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -65,11 +128,11 @@
         /* Spinner */
         .spinner {
             border: 4px solid #f3f3f3;
-            border-top: 4px solid #888888;
+            border-top: 4px solid #1f77b4;
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 2s linear infinite;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
         }
 
         @keyframes spin {
@@ -87,95 +150,28 @@
             opacity: 0;
             visibility: hidden;
         }
-
-        /* Centered content */
-        .content {
-            text-align: center;
-            padding: 20px;
-        }
-
-        button {
-            background-color: #2ca02c;
-            color: #ffffff;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 4px;
-            margin-top: 10px;
-        }
-
-        button:hover {
-            background-color: #218838;
-        }
-
-        /* Navigation bar styling */
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            background-color: #1f77b4;
-        }
-
-        nav ul li {
-            margin: 0 15px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: #ffffff;
-            font-weight: bold;
-            padding: 10px;
-            display: block;
-        }
-
-        nav ul li a:hover {
-            background-color: #105a8b;
-            border-radius: 4px;
-        }
-
-        /* Add styles for the header container */
-        .header-container {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            /* Adjust space between logo and header text */
-        }
-
-        .header-container img {
-            height: 50px;
-            /* Adjust the logo size */
-            width: auto;
-        }
-
-        header h1 {
-            margin: 0;
-            color: #1f77b4;
-        }
     </style>
 </head>
 
 <body>
+    <header>
+        <div class="header-container">
+            <img src="/frontend/icons/android-chrome-512x512.png" alt="FindMe Logo">
+            <h1>FindMe</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/frontend/main.html">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <!-- Content that will be revealed -->
-    <div class="content">
-        <header>
-            <div class="header-container">
-                <img src="/frontend/icons/android-chrome-512x512.png" alt="FindMe Logo"> <!-- Logo image -->
-                <h1>FindMe</h1> <!-- Header text -->
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="/frontend/main.html">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
+    <main>
         <p id="cityResult" aria-live="polite"></p>
         <button onclick="window.location.href='/frontend/main.html'">Return</button>
-    </div>
+    </main>
 
     <!-- Full-page overlay with spinner -->
     <div id="overlay">
@@ -195,7 +191,7 @@
             // Fade out the overlay
             const overlayElement = document.getElementById('overlay');
             overlayElement.classList.add('hidden');
-        }, 500);  //  0.5 second delay for demonstration purposes
+        }, 500);  // 0.5 second delay for demonstration purposes
     </script>
 </body>
 

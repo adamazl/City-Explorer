@@ -8,108 +8,69 @@
     <meta name="description" content="Find your location with FindMe">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="/frontend/icons/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <!-- Google Font -->
 
     <style>
         /* General styling shared across both pages */
         body {
-            background-color: #f7f9fc;
-            color: #333333;
-            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            /* Ensure the body covers the full height of the viewport */
         }
 
         header {
-            text-align: center;
-            margin-top: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-container img {
+            height: 40px;
+            /* Adjust logo size */
+            width: auto;
         }
 
         header h1 {
             color: #1f77b4;
             margin: 0;
-            /* Remove any default margins to standardize layout */
+            font-size: 1.75rem;
         }
 
-        main {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            flex: 1;
-            /* Make the main area fill the remaining space between the header and footer */
-            padding: 20px;
-            text-align: center;
-        }
-
-
-        /* Form styling */
-        form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            max-width: 600px;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            background-color: #ffffff;
-        }
-
-        label {
-            margin-bottom: 10px;
-        }
-
-        select {
-            background-color: #ffffff;
-            color: #333333;
-            border: 1px solid #ccc;
-            padding: 8px;
-            border-radius: 4px;
-        }
-
-        input[type="submit"] {
-            background-color: #2ca02c;
-            color: #ffffff;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 4px;
-            margin-top: 10px;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #218838;
-        }
-
-        /* Centered content */
-        .content {
-            text-align: center;
-            padding: 20px;
-        }
-
-        /* Navigation bar styling */
         nav ul {
-            list-style-type: none;
+            list-style: none;
             padding: 0;
             margin: 0;
             display: flex;
             justify-content: center;
             background-color: #1f77b4;
+            border-radius: 4px;
         }
 
         nav ul li {
-            margin: 0 15px;
+            margin: 0;
         }
 
         nav ul li a {
             text-decoration: none;
             color: #ffffff;
-            font-weight: bold;
-            padding: 10px;
+            font-weight: 600;
+            padding: 10px 20px;
             display: block;
+            transition: background-color 0.3s ease;
         }
 
         nav ul li a:hover {
@@ -117,43 +78,74 @@
             border-radius: 4px;
         }
 
-        /* Add styles for the header container */
-        .header-container {
+        main {
+            flex: 1;
             display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            gap: 20px;
-            /* Adjust space between logo and header text */
+            padding: 40px;
+            text-align: center;
         }
 
-        .header-container img {
-            height: 50px;
-            /* Adjust the logo size */
-            width: auto;
+        form {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            padding: 20px;
+            width: 100%;
         }
 
-        header h1 {
-            margin: 0;
-            color: #1f77b4;
+        label {
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        select {
+            background-color: #ffffff;
+            color: #333;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        input[type="submit"] {
+            background-color: #2ca02c;
+            color: #ffffff;
+            border: none;
+            padding: 12px 24px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
         }
     </style>
 </head>
 
 <body>
-    <div class="content">
-        <header>
-            <div class="header-container">
-                <img src="/frontend/icons/android-chrome-512x512.png" alt="FindMe Logo"> <!-- Logo image -->
-                <h1>FindMe</h1> <!-- Header text -->
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="/frontend/main.html">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
-    </div>
+    <header>
+        <div class="header-container">
+            <img src="/frontend/icons/android-chrome-512x512.png" alt="FindMe Logo">
+            <h1>FindMe</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/frontend/main.html">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <main>
         <form action="/frontend/result.html" method="GET">
@@ -169,11 +161,9 @@
                 <option value="Invercargill">Invercargill</option>
                 <option value="Oamaru">Oamaru</option>
             </select>
-            <br><br>
             <input type="submit" value="Submit">
         </form>
     </main>
-
 </body>
 
 </html>
