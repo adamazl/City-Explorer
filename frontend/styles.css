@@ -1,10 +1,8 @@
 /* General styling shared across both pages */
 body {
     background: linear-gradient(135deg, #1c1c1c, #2e2e2e);
-    /* Dark gradient background */
     color: #f0f0f0;
-    /* Light text color for contrast */
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
@@ -14,13 +12,60 @@ body {
 
 header {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 0;
+    padding: 0;
+    background-color: #2e2e2e;
+    border-bottom: 2px solid #444444;
 }
 
-header h1 {
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-container img {
+    height: 50px;
+    width: auto;
+}
+
+.logo-container h1 {
     color: #ffffff;
-    /* Light color for header text */
+    font-size: 24px;
     margin: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #f0f0f0;
+    font-weight: bold;
+    padding: 10px 15px;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #555555;
+    border-radius: 4px;
 }
 
 main {
@@ -41,32 +86,25 @@ form {
     max-width: 600px;
     padding: 20px;
     border: 1px solid #444444;
-    /* Dark border for form */
     border-radius: 8px;
     background-color: #333333;
-    /* Dark background for form */
 }
 
 label {
     margin-bottom: 10px;
     color: #f0f0f0;
-    /* Light color for form labels */
 }
 
 select {
     background-color: #444444;
-    /* Dark background for select */
     color: #f0f0f0;
-    /* Light text color for select */
     border: 1px solid #555555;
-    /* Slightly lighter border for select */
     padding: 8px;
     border-radius: 4px;
 }
 
 input[type="submit"] {
     background-color: #009688;
-    /* Teal color for submit button */
     color: #ffffff;
     border: none;
     padding: 10px 20px;
@@ -77,78 +115,11 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
     background-color: #00796b;
-    /* Darker teal on hover */
 }
 
-/* Centered content */
-.content {
-    text-align: center;
-    padding: 20px;
-}
-
-/* Navigation bar styling */
-nav {
-    background-color: #333333;
-    /* Dark background for navbar */
-    border-bottom: 1px solid #444444;
-    /* Slightly lighter border for separation */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    /* Subtle shadow for depth */
-}
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* Center items vertically */
-    height: 60px;
-    /* Increased height for better spacing */
-}
-
-nav ul li {
-    margin: 0 20px;
-    /* Increased margin for better spacing between links */
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: #f0f0f0;
-    font-weight: bold;
-    padding: 10px 15px;
-    /* Added padding for better clickability */
-    display: block;
-    transition: background-color 0.3s ease;
-    /* Smooth transition for hover effect */
-}
-
-nav ul li a:hover {
-    background-color: #555555;
-    /* Lighter background on hover */
-    border-radius: 4px;
-    /* Rounded corners on hover */
-}
-
-/* Add styles for the header container */
-.header-container {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-
-}
-
-
-
-.header-container img {
-    height: 50px;
-    width: auto;
-}
-
+/* Button styling */
 button {
     background-color: #009688;
-    /* Teal color for button */
     color: #ffffff;
     border: none;
     padding: 10px 20px;
@@ -159,7 +130,6 @@ button {
 
 button:hover {
     background-color: #00796b;
-    /* Darker teal on hover */
 }
 
 /* Full-page overlay for the spinner */
@@ -170,7 +140,6 @@ button:hover {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
-    /* Dark overlay for spinner */
     display: flex;
     justify-content: center;
     align-items: center;
