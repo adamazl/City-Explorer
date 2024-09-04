@@ -1,91 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>FindMe | Result</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>
-            /* Background and general styling */
-            body {
-                background-color: #f7f9fc;
-                color: #333333;
-                font-family: Arial, sans-serif;
-                margin: 0;
-                padding: 0;
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>FindMe | Result</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        /* Background and general styling */
+        body {
+            background-color: #f7f9fc;
+            color: #333333;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Full-page overlay for the spinner */
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 1);
+            /* White background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+            opacity: 1;
+            z-index: 1000;
+            /* Ensure it covers everything */
+        }
+
+        /* Spinner */
+        .spinner {
+            border: 4px solid #f3f3f3;
+            /* Light grey */
+            border-top: 4px solid #888888;
+            /* Darker grey */
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
             }
 
-            /* Full-page overlay for the spinner */
-            #overlay {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(255, 255, 255, 1); /* White background */
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                transition: opacity 0.5s ease, visibility 0.5s ease;
-                opacity: 1;
-                z-index: 1000; /* Ensure it covers everything */
+            100% {
+                transform: rotate(360deg);
             }
+        }
 
-            /* Spinner */
-            .spinner {
-                border: 4px solid #f3f3f3; /* Light grey */
-                border-top: 4px solid #888888; /* Darker grey */
-                border-radius: 50%;
-                width: 40px;
-                height: 40px;
-                animation: spin 2s linear infinite;
-            }
+        /* Hidden overlay after fade out */
+        #overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
 
-            @keyframes spin {
-                0% { transform: rotate(0deg); }
-                100% { transform: rotate(360deg); }
-            }
+        /* Centered content */
+        .content {
+            text-align: center;
+            padding: 20px;
+        }
 
-            /* Hidden overlay after fade out */
-            #overlay.hidden {
-                opacity: 0;
-                visibility: hidden;
-            }
+        button{
+            background-color: #2ca02c;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
 
-            /* Centered content */
-            .content {
-                text-align: center;
-                padding: 20px;
-            }
-        </style>
-    </head>
-    <body>
-        <!-- Content that will be revealed -->
-        <div class="content">
-            <h1 style="color: #ff7f0e;">You are in:</h1>
-            <p id="cityResult"></p>
-        </div>
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
 
-        <!-- Full-page overlay with spinner -->
-        <div id="overlay">
-            <div class="spinner"></div>
-        </div>
+<body>
+    <!-- Content that will be revealed -->
+    <div class="content">
+        <h1 style="color: #ff7f0e;">You are in:</h1>
+        <p id="cityResult"></p>
+        <button onclick="window.location.href='/frontend/main.html'">
+            Return
+        </button>
+    </div>
 
-        <script>
-            // Simulate a delay to demonstrate the spinner (remove in production)
-            setTimeout(() => {
-                const urlParams = new URLSearchParams(window.location.search);
-                const city = urlParams.get('city');
-                
-                // Set the city result
-                const cityResultElement = document.getElementById('cityResult');
-                cityResultElement.textContent = city ? city : 'No city selected';
+    
 
-                // Fade out the overlay
-                const overlayElement = document.getElementById('overlay');
-                overlayElement.classList.add('hidden');
-            }, 1000);  // 1 second delay for demonstration purposes
-        </script>
-    </body>
+    <!-- Full-page overlay with spinner -->
+    <div id="overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <script>
+        // Simulate a delay to demonstrate the spinner (remove in production)
+        setTimeout(() => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const city = urlParams.get('city');
+
+            // Set the city result
+            const cityResultElement = document.getElementById('cityResult');
+            cityResultElement.textContent = city ? city : 'No city selected';
+
+            // Fade out the overlay
+            const overlayElement = document.getElementById('overlay');
+            overlayElement.classList.add('hidden');
+        }, 1000);  // 1 second delay for demonstration purposes
+    </script>
+</body>
+
 </html>
