@@ -1,4 +1,4 @@
-<h1> Weather App by ADAM AIZAL </h1>
+<h1> FindMe by Adam Aizal</h1>
 <p>Guesses your city based on some input!</p>
 
 <h3>Currently a work-in-progress</h3>
