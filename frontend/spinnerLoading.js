@@ -11,4 +11,4 @@ setTimeout(() => {
     // Fade out the overlay
     const overlayElement = document.getElementById('overlay');
     overlayElement.classList.add('hidden');
-}, 500);  // 0.5 second delay for demonstration purposes
+}, 1000);  // 1 second delay for demonstration purposes

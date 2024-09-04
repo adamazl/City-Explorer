@@ -30,7 +30,7 @@
     </header>
 
     <main>
-        <form action="/frontend/result.html" method="GET">
+        <form id="cityForm">
             <label for="city">Select the city you are located:</label>
             <select name="city" id="city">
                 <option value="Dunedin">Dunedin</option>
@@ -46,6 +46,21 @@
             <input type="submit" value="Submit">
         </form>
     </main>
+
+    <script src="/frontend/cityData.js"></script>
+    <script>
+        document.getElementById('cityForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const city = document.getElementById('city').value;
+            const cityInfo = cityData[city];
+
+            if (cityInfo) {
+                localStorage.setItem('selectedCity', JSON.stringify(cityInfo));
+                window.location.href = '/frontend/result.html';
+            }
+        });
+    </script>
 </body>
 
 </html>

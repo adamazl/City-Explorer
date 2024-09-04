@@ -30,7 +30,11 @@
     </header>
 
     <main>
-        <p id="cityResult" aria-live="polite"></p>
+        <div id="cityInfo">
+            <h2 id="cityName"></h2>
+            <p id="cityDescription"></p>
+            <ul id="cityHighlights"></ul>
+        </div>
         <button onclick="window.location.href='/frontend/main.html'">Return</button>
     </main>
 
@@ -39,6 +43,30 @@
     </div>
 
     <script src="/frontend/spinnerLoading.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const cityInfo = JSON.parse(localStorage.getItem('selectedCity'));
+
+            if (cityInfo) {
+                document.getElementById('cityName').textContent = cityInfo.name;
+                document.getElementById('cityDescription').textContent = cityInfo.description;
+
+                const highlightsList = document.getElementById('cityHighlights');
+                cityInfo.highlights.forEach(function (highlight) {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = highlight;
+                    highlightsList.appendChild(listItem);
+                });
+
+                // Hide the spinner after the content is loaded
+                const overlayElement = document.getElementById('overlay');
+                overlayElement.classList.add('hidden');
+            } else {
+                alert('No city information found.');
+                window.location.href = '/frontend/main.html';
+            }
+        });
+    </script>
 </body>
 
 </html>
